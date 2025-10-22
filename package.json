@@ -1,24 +1,23 @@
 {
   "name": "talk_to_text",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
+  "private": true,
+  "description": "Monorepo for Talk to Text project (backend and frontend)",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Dennis Tschuwasow",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.21.2"
+  "license": "ISC",
+  "packageManager": "pnpm@10.19.0",
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "pnpm i && pnpm build"
+  },
+  "resolutions": {
+    "rolldown": "npm:@rolldown/browser@latest"
   },
   "devDependencies": {
-    "@types/express": "^4.17.23",
-    "@types/node": "^20.14.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "rolldown": "^1.0.0-beta.44"
   }
 }
