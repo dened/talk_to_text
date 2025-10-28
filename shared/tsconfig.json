@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
 
-    "outDir": "dist",
-    "declaration": true,
-    "target": "esnext",
-    "lib": ["es2023"],
-    "moduleDetection": "force",
-    "module": "NodeNext", 
-    "moduleResolution": "NodeNext", 
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "strict": true,
     "noUnusedLocals": true,

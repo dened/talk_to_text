@@ -1,5 +1,5 @@
-
 import { Request, Response, NextFunction } from 'express';
+import { ApiResponse } from 'shared';
 
 interface CustomError extends Error {
   status?: number;
@@ -7,16 +7,22 @@ interface CustomError extends Error {
 }
 
 const errorMiddleware = (
-  err: CustomError, 
-  req: Request, 
-  res: Response, 
-  _next: NextFunction
+  err: CustomError,
+  req: Request,
+  res: Response,
+  _next: NextFunction,
 ): void => {
-  res.status(err.status || 500).json({
-    message: err.message || 'Internal Server Error',
-    errors: err.errors || null,
-  });
+  const errorResponse: ApiResponse = {
+    message: [
+      {
+        type: 'error',
+        code: 500,
+        title: err.message || 'Internal Server Error',
+      },
+    ],
+  };
+
+  res.status(err.status || 500).json(errorResponse);
 };
 
 export default errorMiddleware;
-

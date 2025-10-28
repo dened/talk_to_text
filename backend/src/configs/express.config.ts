@@ -9,7 +9,7 @@ import {
   morganMiddleware,
 } from '../middlewares/index.ts';
 import server from '../server.ts';
-import uploadRouter from '../routes/upload.ts';
+import uploadRouter from '../routes/upload.route.ts';
 
 const configureExpress = (): Application => {
   const app: Application = express();
@@ -25,11 +25,11 @@ const configureExpress = (): Application => {
   app.use(cookieParser());
   app.use(limiterMiddleware);
 
-  app.use('/upload', uploadRouter);
-
   app.get('/', (_, res) => {
     res.send('Hello World!');
   });
+
+  app.use('/upload', uploadRouter);
 
   app.use(errorMiddleware);
 

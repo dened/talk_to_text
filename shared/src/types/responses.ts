@@ -1,33 +1,33 @@
 /**
- * Унифицированный интерфейс для успешных ответов API.
- * @template T Тип данных, возвращаемых в ответе.
+ * Типы ответов API.
  */
-export interface ApiResponse<T> {
-  success: true;
-  data: T;
-  message?: string; // Опциональное сообщение об успехе
+export type ResponseType = 'success' | 'error';
+
+/**
+ * Описывает объект сообщения в ответе API.
+ */
+export interface ResponseMessage {
+    type: ResponseType;
+    code?: number;
+    title: string;
 }
 
 /**
- * Унифицированный интерфейс для ответов API с ошибками.
+ * Унифицированный интерфейс для ответов API.
+ * @template T Тип данных, возвращаемых в поле `data`.
  */
-export interface ApiErrorResponse {
-  success: false;
-  error: {
-    code: string;    // Код ошибки (например, 'FILE_NOT_UPLOADED')
-    message: string; // Человекочитаемое сообщение об ошибке
-    details?: any;   // Опциональные детали ошибки (например, валидационные ошибки)
-  };
+export interface ApiResponse<T = any> {
+    data?: T;
+    message?: ResponseMessage[];
 }
-
 /**
  * Интерфейс для данных, возвращаемых при успешной загрузке файла.
  */
 export interface UploadSuccessData {
-  filename: string;
-  path: string;
-  size: number;
-  mimetype: string;
-  originalname: string;
-  destination: string;
+    filename: string;
+    path: string;
+    size: number;
+    mimetype: string;
+    originalname: string;
+    destination: string;
 }

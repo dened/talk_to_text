@@ -3,5 +3,10 @@ packages:
   - backend
   - shared
 
+ignoredBuiltDependencies:
+  - esbuild
+  - unrs-resolver
+
 onlyBuiltDependencies:
   - '@rolldown/browser'
+  - sqlite3
